@@ -1,0 +1,11 @@
+{
+    "name": "@klipper/sdk",
+    "version": "1.0.0",
+    "description": "SDK of Klipper Platform for TypeScript",
+    "repository": "git@github.com:klipperdev/sdk-typescript.git",
+    "author": "François Pluchino <francois.pluchino@klipper.dev>",
+    "license": "MIT",
+    "private": true,
+    "dependencies": {
+    }
+}
