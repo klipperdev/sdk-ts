@@ -8,6 +8,6 @@ Resources
 ---------
 
 - [Documentation](https://doc.klipper.dev/sdk/typescript)
-- [Report issues](https://github.com/klipperdev/sdk-typescript/issues)
-  and [send Pull Requests](https://github.com/klipperdev/sdk-typescript/pulls)
-  in this [repository](https://github.com/klipperdev/sdk-typescript)
+- [Report issues](https://github.com/klipperdev/sdk-ts/issues)
+  and [send Pull Requests](https://github.com/klipperdev/sdk-ts/pulls)
+  in this [repository](https://github.com/klipperdev/sdk-ts)
