@@ -14,11 +14,13 @@ import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from './KlipperClientConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {OauthConfig} from './OauthConfig';
-import {createApiError} from './utils/error';
-import {Service, ServiceConstructor} from './Service';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
+import {Service, ServiceConstructor} from './Service';
+import {Authorization} from './services/Authorization';
+import {createApiError} from './utils/error';
 
 const SERVICES: ServiceConstructor[] = [
+    Authorization,
 ];
 
 /**

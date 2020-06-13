@@ -26,8 +26,16 @@ export function createApiError(error: Error): HttpClientRequestError {
 
         if (((error as AxiosError).response as AxiosResponse).data) {
             const data = ((error as AxiosError).response as AxiosResponse).data;
-            Object.assign(errors, data);
-            message = data.message || message;
+
+            if (400 === statusCode && 'invalid_grant' === data.error) {
+                message = 'Invalid credentials';
+                statusCode = 403;
+            } else if (401 === statusCode && 'access_denied' === data.error) {
+                message = data.hint;
+            } else {
+                Object.assign(errors, data);
+                message = data.message || message;
+            }
         }
     }
 
