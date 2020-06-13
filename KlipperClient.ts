@@ -51,7 +51,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    protected async request<T = MapKey>(config: AxiosRequestConfig, canceler?: Canceler): Promise<T|null> {
+    public async request<T = MapKey>(config: AxiosRequestConfig, canceler?: Canceler): Promise<T|null> {
         if (canceler) {
             config.cancelToken = new axios.CancelToken(function executor(c) {
                 canceler.setExecutor(c);
@@ -74,7 +74,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    protected async requestList<T = MapKey>(config: ListRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
+    public async requestList<T = MapKey>(config: ListRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
         if (!config.method) {
             config.method = 'GET';
         }
