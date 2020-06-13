@@ -9,14 +9,18 @@
 
 import {AxiosRequestConfig} from 'axios';
 import {MapKey} from '@klipper/http-client/models/MapKey';
+import {OauthConfig} from './OauthConfig';
+import {ServiceConstructor} from './Service';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export interface KlipperClientConfig {
     baseUrl: string;
+    oauth: OauthConfig,
     timeout?: number;
     maxRedirects?: number;
     headers?: MapKey<string>;
     axiosConfig?: AxiosRequestConfig;
+    services?: ServiceConstructor[];
 }

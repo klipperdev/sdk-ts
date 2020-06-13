@@ -13,6 +13,7 @@ import {MapKey} from '@klipper/http-client/models/MapKey';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from './KlipperClientConfig';
 import {ListRequestConfig} from './ListRequestConfig';
+import {OauthConfig} from './OauthConfig';
 import {createApiError} from './utils/error';
 
 /**
@@ -21,10 +22,12 @@ import {createApiError} from './utils/error';
 export class KlipperClient {
     private readonly axios: AxiosInstance;
 
+    public readonly oauthConfig: OauthConfig;
+
     constructor(config: KlipperClientConfig) {
         const axiosConfig = config.axiosConfig || {};
-        axiosConfig.baseURL = axiosConfig.baseURL || axiosConfig.baseURL;
-        axiosConfig.timeout = axiosConfig.timeout || axiosConfig.timeout;
+        axiosConfig.baseURL = config.baseUrl;
+        axiosConfig.timeout = config.timeout;
         axiosConfig.maxRedirects = axiosConfig.maxRedirects || axiosConfig.maxRedirects;
         axiosConfig.headers = Object.assign({}, {
             'Accept': 'application/json',
@@ -32,6 +35,7 @@ export class KlipperClient {
         }, config.headers || {});
 
         this.axios = axios.create(axiosConfig);
+        this.oauthConfig = config.oauth;
     }
 
     /**
