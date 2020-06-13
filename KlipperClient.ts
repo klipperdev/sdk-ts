@@ -15,6 +15,11 @@ import {KlipperClientConfig} from './KlipperClientConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {OauthConfig} from './OauthConfig';
 import {createApiError} from './utils/error';
+import {Service, ServiceConstructor} from './Service';
+import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
+
+const SERVICES: ServiceConstructor[] = [
+];
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
@@ -23,6 +28,8 @@ export class KlipperClient {
     private readonly axios: AxiosInstance;
 
     public readonly oauthConfig: OauthConfig;
+
+    private readonly services: MapKey<Service> = {};
 
     constructor(config: KlipperClientConfig) {
         const axiosConfig = config.axiosConfig || {};
@@ -36,6 +43,42 @@ export class KlipperClient {
 
         this.axios = axios.create(axiosConfig);
         this.oauthConfig = config.oauth;
+
+        const services = config.services ? config.services : SERVICES;
+
+        for (const service of services) {
+            this.add(service);
+        }
+    }
+
+    /**
+     * Add the api service.
+     */
+    public add(service: ServiceConstructor): void {
+        if (typeof service === 'function' && service.getName()) {
+            this.services[service.getName()] = new service(this);
+        }
+    }
+
+    /**
+     * Get the api service.
+     */
+    public get<T extends Service>(service: ServiceConstructor | string): T {
+        let name = null;
+
+        if (typeof service === 'string') {
+            name = service;
+        } else if (service.hasOwnProperty('getName')) {
+            name = (service as ServiceConstructor).getName();
+        } else {
+            throw new ServiceNotFoundError(service);
+        }
+
+        if (!this.services[name]) {
+            throw new ServiceNotFoundError(name);
+        }
+
+        return this.services[name] as T;
     }
 
     /**

@@ -9,6 +9,7 @@
 
 import {AxiosError, AxiosResponse} from 'axios';
 import {HttpClientRequestError} from '@klipper/http-client/errors/HttpClientRequestError';
+import {Errors} from '@klipper/http-client/models/responses/Errors';
 
 /**
  * Create the error for the api.
@@ -18,7 +19,7 @@ import {HttpClientRequestError} from '@klipper/http-client/errors/HttpClientRequ
 export function createApiError(error: Error): HttpClientRequestError {
     let message: string = 'Error network';
     let statusCode: number = 0;
-    const errors = {};
+    const errors = {errors: []} as Errors;
 
     if ((error as AxiosError).response && ((error as AxiosError).response as AxiosResponse).status) {
         statusCode = ((error as AxiosError).response as AxiosResponse).status;
