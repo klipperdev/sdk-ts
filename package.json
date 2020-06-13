@@ -7,5 +7,7 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
+        "@klipper/http-client": "github:klipperdev/http-client-ts#master",
+        "axios": "^0.19.2"
     }
 }
