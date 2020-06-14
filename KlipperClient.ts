@@ -18,6 +18,7 @@ import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
 import {Service, ServiceConstructor} from './Service';
 import {Authorization} from './services/Authorization';
 import {createApiError} from './utils/error';
+import {removeEmptyRequestAuth} from './interceptors';
 
 const SERVICES: ServiceConstructor[] = [
     Authorization,
@@ -51,6 +52,8 @@ export class KlipperClient {
         for (const service of services) {
             this.add(service);
         }
+
+        this.addRequestInterceptor(removeEmptyRequestAuth);
     }
 
     /**

@@ -7,6 +7,7 @@
  * file that was distributed with this source code.
  */
 
+import {AxiosBasicCredentials} from 'axios';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {BaseService} from '../BaseService';
 import {CredentialsRequest} from '../models/requests/CredentialsRequest';
@@ -35,6 +36,7 @@ export class Authorization extends BaseService {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
+            auth: {} as AxiosBasicCredentials,
             data,
         }, canceler) as OauthTokenResponse;
     }
