@@ -40,4 +40,11 @@ export class Authorization extends BaseService {
             data,
         }, canceler) as OauthTokenResponse;
     }
+
+    public async logout(canceler?: Canceler): Promise<null> {
+        return await this.client.request<null>({
+            method: 'PUT',
+            url: '/logout',
+        }, canceler);
+    }
 }
