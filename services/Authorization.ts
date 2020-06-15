@@ -47,4 +47,23 @@ export class Authorization extends BaseService {
             url: '/logout',
         }, canceler);
     }
+
+    public async refresh(refreshToken: string, canceler?: Canceler): Promise<OauthTokenResponse> {
+        const data = new FormData();
+        data.set('grant_type', 'refresh_token');
+        data.set('client_id', this.client.oauthConfig.clientId);
+        data.set('scope', this.client.oauthConfig.scope);
+        data.set('refresh_token', refreshToken);
+
+        return await this.client.request<OauthTokenResponse>({
+            method: 'POST',
+            baseURL: this.client.oauthConfig.baseUrl,
+            url: '/oauth/token',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            auth: {} as AxiosBasicCredentials,
+            data,
+        }, canceler) as OauthTokenResponse;
+    }
 }
