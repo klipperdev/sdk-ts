@@ -48,12 +48,16 @@ export class Authorization extends BaseService {
         }, canceler);
     }
 
-    public async refresh(refreshToken: string, canceler?: Canceler): Promise<OauthTokenResponse> {
+    public async refresh(refreshToken: string, scope?: string, canceler?: Canceler): Promise<OauthTokenResponse> {
         const data = new FormData();
+        scope = scope || this.client.oauthConfig.scope;
         data.set('grant_type', 'refresh_token');
         data.set('client_id', this.client.oauthConfig.clientId);
-        data.set('scope', this.client.oauthConfig.scope);
         data.set('refresh_token', refreshToken);
+
+        if (scope && '*' !== scope) {
+            data.set('scope', scope);
+        }
 
         return await this.client.request<OauthTokenResponse>({
             method: 'POST',
