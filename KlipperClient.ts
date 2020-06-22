@@ -183,5 +183,10 @@ export class KlipperClient {
             config.params = config.params || {};
             config.params.limit = (config as ListRequestConfig).limit;
         }
+
+        if (undefined !== (config as ListRequestConfig).filter) {
+            config.headers = config.headers || {};
+            config.headers['X-Filter'] = JSON.stringify((config as ListRequestConfig).filter);
+        }
     }
 }

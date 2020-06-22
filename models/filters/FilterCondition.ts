@@ -7,15 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosRequestConfig} from 'axios';
-import {FilterCondition} from './models/filters/FilterCondition';
-import {FilterRule} from './models/filters/FilterRule';
+import {FilterRule} from './FilterRule';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface ListRequestConfig extends AxiosRequestConfig {
-    page?: number;
-    limit?: number;
-    filter?: FilterCondition|FilterRule;
+export interface FilterCondition {
+    condition: string;
+    rules: FilterRule[];
 }
