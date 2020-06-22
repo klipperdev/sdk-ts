@@ -188,5 +188,10 @@ export class KlipperClient {
             config.headers = config.headers || {};
             config.headers['X-Filter'] = JSON.stringify((config as ListRequestConfig).filter);
         }
+
+        if (undefined !== (config as ListRequestConfig).search) {
+            config.headers = config.headers || {};
+            config.headers['X-Search'] = (config as ListRequestConfig).search;
+        }
     }
 }

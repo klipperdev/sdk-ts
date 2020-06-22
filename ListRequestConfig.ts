@@ -18,4 +18,5 @@ export interface ListRequestConfig extends AxiosRequestConfig {
     page?: number;
     limit?: number;
     filter?: FilterCondition|FilterRule;
+    search?: string;
 }
