@@ -115,6 +115,7 @@ export class KlipperClient {
                 });
             }
 
+            KlipperClient.updateRequestConfig(requestConfig.config);
             requests.push(this.axios.request<T>(requestConfig.config));
             response.push(null);
         }
@@ -145,6 +146,7 @@ export class KlipperClient {
         }
 
         try {
+            KlipperClient.updateRequestConfig(config);
             const res = await this.axios.request(config);
 
             return res ? res.data : null;
@@ -161,22 +163,25 @@ export class KlipperClient {
      * Build and run the request.
      */
     public async requestList<T = MapKey>(config: ListRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
+        KlipperClient.updateRequestConfig(config);
+        const res = await this.request<ListResponse<T>>(config, canceler);
+
+        return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
+    }
+
+    private static updateRequestConfig(config: AxiosRequestConfig|ListRequestConfig): void {
         if (!config.method) {
             config.method = 'GET';
         }
 
-        if (undefined !== config.page) {
+        if (undefined !== (config as ListRequestConfig).page) {
             config.params = config.params || {};
-            config.params.page = config.page;
+            config.params.page = (config as ListRequestConfig).page;
         }
 
-        if (undefined !== config.limit) {
+        if (undefined !== (config as ListRequestConfig).limit) {
             config.params = config.params || {};
-            config.params.limit = config.limit;
+            config.params.limit = (config as ListRequestConfig).limit;
         }
-
-        const res = await this.request<ListResponse<T>>(config, canceler);
-
-        return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
     }
 }
