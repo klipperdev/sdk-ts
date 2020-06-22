@@ -12,6 +12,7 @@ import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
 import {MapKey} from '@klipper/http-client/models/MapKey';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from './KlipperClientConfig';
+import {RequestConfig} from './RequestConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
@@ -98,6 +99,39 @@ export class KlipperClient {
      */
     public addResponseInterceptor(onFulfilled?: (value: AxiosResponse) => AxiosResponse|Promise<AxiosResponse>, onRejected?: (error: any) => any): number {
         return this.axios.interceptors.response.use(onFulfilled, onRejected);
+    }
+
+    /**
+     * Build and run requests in parallel.
+     */
+    public async requestAll<T = any>(requestConfigs: RequestConfig[]): Promise<(T|null)[]> {
+        const requests = [] as Promise<AxiosResponse<any>>[];
+        const response = [] as (T|null)[];
+
+        for (const requestConfig of requestConfigs) {
+            if (requestConfig.canceler) {
+                requestConfig.config.cancelToken = new axios.CancelToken(function executor(c) {
+                    (requestConfig.canceler as Canceler).setExecutor(c);
+                });
+            }
+
+            requests.push(this.axios.request<T>(requestConfig.config));
+            response.push(null);
+        }
+
+        try {
+            const results = await axios.all(requests);
+
+            for (let i = 0; i < results.length; ++i) {
+                response[i] = results[i] ? results[i].data : null;
+            }
+        } catch (e) {
+            if (!axios.isCancel(e)) {
+                throw createApiError(e);
+            }
+        }
+
+        return response;
     }
 
     /**
