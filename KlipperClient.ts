@@ -13,6 +13,7 @@ import {MapKey} from '@klipper/http-client/models/MapKey';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from './KlipperClientConfig';
 import {RequestConfigItem} from './RequestConfigItem';
+import {CommonRequestConfig} from './CommonRequestConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {RequestConfig} from './RequestConfig';
 import {OauthConfig} from './OauthConfig';
@@ -170,7 +171,7 @@ export class KlipperClient {
         return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
     }
 
-    private static updateRequestConfig(config: AxiosRequestConfig|RequestConfig|ListRequestConfig): void {
+    private static updateRequestConfig(config: AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig): void {
         if (!config.method) {
             config.method = 'GET';
         }
@@ -195,9 +196,9 @@ export class KlipperClient {
             config.headers['X-Search'] = (config as ListRequestConfig).search;
         }
 
-        if (undefined !== (config as RequestConfig|ListRequestConfig).fields) {
+        if (undefined !== (config as CommonRequestConfig).fields) {
             config.headers = config.headers || {};
-            config.headers['X-Fields'] = ((config as RequestConfig|ListRequestConfig).fields as string[]).join(',');
+            config.headers['X-Fields'] = ((config as CommonRequestConfig).fields as string[]).join(',');
         }
     }
 }

@@ -7,10 +7,11 @@
  * file that was distributed with this source code.
  */
 
-import {CommonRequestConfig} from './CommonRequestConfig';
+import {AxiosRequestConfig} from 'axios';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface RequestConfig extends CommonRequestConfig {
+export interface CommonRequestConfig extends AxiosRequestConfig {
+    fields?: string[];
 }
