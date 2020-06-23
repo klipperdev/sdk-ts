@@ -17,6 +17,7 @@ import {CommonRequestConfig} from './requests/CommonRequestConfig';
 import {ListRequestConfig} from './requests/ListRequestConfig';
 import {RequestConfigType} from './requests/RequestConfigTypes';
 import {SearchRequestConfig} from './requests/SearchRequestConfig';
+import {MetadataRequestConfig} from './requests/MetadataRequestConfig';
 import {Sort} from './requests/Sort';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
@@ -225,6 +226,11 @@ export class KlipperClient {
             if (undefined !== (config as SearchRequestConfig).objects) {
                 config.headers['X-Objects'] = ((config as SearchRequestConfig).objects as string[]).join(',');
             }
+        }
+
+        if ((config as MetadataRequestConfig).metadataDetails) {
+            config.headers = config.headers || {};
+            config.headers['X-Metadata-Details'] = 'true';
         }
     }
 }

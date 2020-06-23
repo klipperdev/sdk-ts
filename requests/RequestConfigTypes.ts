@@ -12,8 +12,9 @@ import {CommonRequestConfig} from './CommonRequestConfig';
 import {RequestConfig} from './RequestConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {SearchRequestConfig} from './SearchRequestConfig';
+import {MetadataRequestConfig} from './MetadataRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig|SearchRequestConfig;
+export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig|SearchRequestConfig|MetadataRequestConfig;
