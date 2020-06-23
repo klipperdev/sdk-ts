@@ -7,13 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import {Canceler} from '@klipper/http-client/Canceler';
-import {RequestConfigType} from './RequestConfigTypes';
+import {AxiosRequestConfig} from 'axios';
+import {CommonRequestConfig} from './CommonRequestConfig';
+import {RequestConfig} from './RequestConfig';
+import {ListRequestConfig} from './ListRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface RequestConfigItem {
-    config: RequestConfigType;
-    canceler?: Canceler;
-}
+export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig;

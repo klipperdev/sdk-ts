@@ -15,7 +15,7 @@ import {KlipperClientConfig} from './KlipperClientConfig';
 import {RequestConfigItem} from './requests/RequestConfigItem';
 import {CommonRequestConfig} from './requests/CommonRequestConfig';
 import {ListRequestConfig} from './requests/ListRequestConfig';
-import {RequestConfig} from './requests/RequestConfig';
+import {RequestConfigType} from './requests/RequestConfigTypes';
 import {Sort} from './requests/Sort';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
@@ -141,7 +141,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    public async request<T = MapKey>(config: AxiosRequestConfig|RequestConfig, canceler?: Canceler): Promise<T|null> {
+    public async request<T = MapKey>(config: RequestConfigType, canceler?: Canceler): Promise<T|null> {
         if (canceler) {
             config.cancelToken = new axios.CancelToken((c: Function) => {
                 canceler.setExecutor(c);
@@ -165,14 +165,13 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    public async requestList<T = MapKey>(config: ListRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
-        KlipperClient.updateRequestConfig(config);
+    public async requestList<T = MapKey>(config: ListRequestConfig|AxiosRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
         const res = await this.request<ListResponse<T>>(config, canceler);
 
         return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
     }
 
-    private static updateRequestConfig(config: AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig): void {
+    private static updateRequestConfig(config: RequestConfigType): void {
         if (!config.method) {
             config.method = 'GET';
         }
