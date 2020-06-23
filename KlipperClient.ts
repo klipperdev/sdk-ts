@@ -17,6 +17,7 @@ import {CommonRequestConfig} from './requests/CommonRequestConfig';
 import {ListRequestConfig} from './requests/ListRequestConfig';
 import {RequestConfigType} from './requests/RequestConfigTypes';
 import {DeleteRequestConfig} from './requests/DeleteRequestConfig';
+import {BatchRequestConfig} from './requests/BatchRequestConfig';
 import {SearchRequestConfig} from './requests/SearchRequestConfig';
 import {MetadataRequestConfig} from './requests/MetadataRequestConfig';
 import {Sort} from './requests/Sort';
@@ -223,6 +224,11 @@ export class KlipperClient {
         if ((config as DeleteRequestConfig).forceDelete) {
             config.headers = config.headers || {};
             config.headers['X-Force-Delete'] = 'true';
+        }
+
+        if ((config as BatchRequestConfig).transactional) {
+            config.headers = config.headers || {};
+            config.headers['X-Transactional'] = 'true';
         }
 
         if (undefined !== (config as SearchRequestConfig).query) {

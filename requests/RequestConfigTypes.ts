@@ -12,10 +12,11 @@ import {CommonRequestConfig} from './CommonRequestConfig';
 import {RequestConfig} from './RequestConfig';
 import {ListRequestConfig} from './ListRequestConfig';
 import {DeleteRequestConfig} from './DeleteRequestConfig';
+import {BatchRequestConfig} from './BatchRequestConfig';
 import {SearchRequestConfig} from './SearchRequestConfig';
 import {MetadataRequestConfig} from './MetadataRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig|DeleteRequestConfig|SearchRequestConfig|MetadataRequestConfig;
+export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig|DeleteRequestConfig|BatchRequestConfig|SearchRequestConfig|MetadataRequestConfig;
