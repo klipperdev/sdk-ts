@@ -12,8 +12,9 @@ import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
 import {MapKey} from '@klipper/http-client/models/MapKey';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from './KlipperClientConfig';
-import {RequestConfig} from './RequestConfig';
+import {RequestConfigItem} from './RequestConfigItem';
 import {ListRequestConfig} from './ListRequestConfig';
+import {RequestConfig} from './RequestConfig';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
 import {Service, ServiceConstructor} from './Service';
@@ -104,7 +105,7 @@ export class KlipperClient {
     /**
      * Build and run requests in parallel.
      */
-    public async requestAll<T = any>(requestConfigs: RequestConfig[]): Promise<(T|null)[]> {
+    public async requestAll<T = any>(requestConfigs: RequestConfigItem[]): Promise<(T|null)[]> {
         const requests = [] as Promise<AxiosResponse<any>>[];
         const response = [] as (T|null)[];
 
@@ -138,7 +139,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    public async request<T = MapKey>(config: AxiosRequestConfig, canceler?: Canceler): Promise<T|null> {
+    public async request<T = MapKey>(config: AxiosRequestConfig|RequestConfig, canceler?: Canceler): Promise<T|null> {
         if (canceler) {
             config.cancelToken = new axios.CancelToken((c: Function) => {
                 canceler.setExecutor(c);
@@ -169,7 +170,7 @@ export class KlipperClient {
         return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
     }
 
-    private static updateRequestConfig(config: AxiosRequestConfig|ListRequestConfig): void {
+    private static updateRequestConfig(config: AxiosRequestConfig|RequestConfig|ListRequestConfig): void {
         if (!config.method) {
             config.method = 'GET';
         }
@@ -192,6 +193,11 @@ export class KlipperClient {
         if (undefined !== (config as ListRequestConfig).search) {
             config.headers = config.headers || {};
             config.headers['X-Search'] = (config as ListRequestConfig).search;
+        }
+
+        if (undefined !== (config as RequestConfig|ListRequestConfig).fields) {
+            config.headers = config.headers || {};
+            config.headers['X-Fields'] = ((config as RequestConfig|ListRequestConfig).fields as string[]).join(',');
         }
     }
 }

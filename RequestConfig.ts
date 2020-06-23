@@ -8,13 +8,10 @@
  */
 
 import {AxiosRequestConfig} from 'axios';
-import {Canceler} from '@klipper/http-client/Canceler';
-import {ListRequestConfig} from './ListRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface RequestConfig {
-    config: AxiosRequestConfig|ListRequestConfig;
-    canceler?: Canceler;
+export interface RequestConfig extends AxiosRequestConfig {
+    fields?: string[];
 }

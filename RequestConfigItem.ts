@@ -8,16 +8,14 @@
  */
 
 import {AxiosRequestConfig} from 'axios';
-import {FilterCondition} from './models/filters/FilterCondition';
-import {FilterRule} from './models/filters/FilterRule';
+import {Canceler} from '@klipper/http-client/Canceler';
+import {ListRequestConfig} from './ListRequestConfig';
+import {RequestConfig} from './RequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface ListRequestConfig extends AxiosRequestConfig {
-    page?: number;
-    limit?: number;
-    filter?: FilterCondition|FilterRule;
-    search?: string;
-    fields?: string[];
+export interface RequestConfigItem {
+    config: AxiosRequestConfig|RequestConfig|ListRequestConfig;
+    canceler?: Canceler;
 }
