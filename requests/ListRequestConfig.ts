@@ -7,8 +7,8 @@
  * file that was distributed with this source code.
  */
 
-import {FilterCondition} from './models/filters/FilterCondition';
-import {FilterRule} from './models/filters/FilterRule';
+import {FilterCondition} from '../models/filters/FilterCondition';
+import {FilterRule} from '../models/filters/FilterRule';
 import {CommonRequestConfig} from './CommonRequestConfig';
 
 /**
