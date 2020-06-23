@@ -16,6 +16,7 @@ import {RequestConfigItem} from './requests/RequestConfigItem';
 import {CommonRequestConfig} from './requests/CommonRequestConfig';
 import {ListRequestConfig} from './requests/ListRequestConfig';
 import {RequestConfigType} from './requests/RequestConfigTypes';
+import {SearchRequestConfig} from './requests/SearchRequestConfig';
 import {Sort} from './requests/Sort';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
@@ -215,6 +216,15 @@ export class KlipperClient {
         if (undefined !== (config as CommonRequestConfig).acceptVersion) {
             config.headers = config.headers || {};
             config.headers['X-Accept-Version'] = (config as CommonRequestConfig).acceptVersion;
+        }
+
+        if (undefined !== (config as SearchRequestConfig).query) {
+            config.headers = config.headers || {};
+            config.headers['X-Query'] = (config as SearchRequestConfig).query;
+
+            if (undefined !== (config as SearchRequestConfig).objects) {
+                config.headers['X-Objects'] = ((config as SearchRequestConfig).objects as string[]).join(',');
+            }
         }
     }
 }

@@ -7,13 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosRequestConfig} from 'axios';
 import {CommonRequestConfig} from './CommonRequestConfig';
-import {RequestConfig} from './RequestConfig';
-import {ListRequestConfig} from './ListRequestConfig';
-import {SearchRequestConfig} from './SearchRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export type RequestConfigType = AxiosRequestConfig|CommonRequestConfig|RequestConfig|ListRequestConfig|SearchRequestConfig;
+export interface SearchRequestConfig extends CommonRequestConfig {
+    query: string;
+    objects?: string[];
+}
