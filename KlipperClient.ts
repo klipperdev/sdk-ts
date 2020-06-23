@@ -16,6 +16,7 @@ import {RequestConfigItem} from './requests/RequestConfigItem';
 import {CommonRequestConfig} from './requests/CommonRequestConfig';
 import {ListRequestConfig} from './requests/ListRequestConfig';
 import {RequestConfig} from './requests/RequestConfig';
+import {Sort} from './requests/Sort';
 import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
 import {Service, ServiceConstructor} from './Service';
@@ -184,6 +185,12 @@ export class KlipperClient {
         if (undefined !== (config as ListRequestConfig).limit) {
             config.params = config.params || {};
             config.params.limit = (config as ListRequestConfig).limit;
+        }
+
+        if (undefined !== (config as ListRequestConfig).sort) {
+            const sort: Sort|Sort[] = (config as ListRequestConfig).sort as Sort|Sort[];
+            config.headers = config.headers || {};
+            config.headers['X-Search'] = (typeof sort === 'object' ? [sort as Sort] : sort).toString();
         }
 
         if (undefined !== (config as ListRequestConfig).filter) {

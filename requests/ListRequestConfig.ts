@@ -10,6 +10,7 @@
 import {FilterCondition} from '../models/filters/FilterCondition';
 import {FilterRule} from '../models/filters/FilterRule';
 import {CommonRequestConfig} from './CommonRequestConfig';
+import {Sort} from './Sort';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
@@ -17,6 +18,7 @@ import {CommonRequestConfig} from './CommonRequestConfig';
 export interface ListRequestConfig extends CommonRequestConfig {
     page?: number;
     limit?: number;
+    sort?: Sort|Sort[],
     filter?: FilterCondition|FilterRule;
     search?: string;
 }
