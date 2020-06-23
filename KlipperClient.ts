@@ -205,5 +205,10 @@ export class KlipperClient {
             config.headers = config.headers || {};
             config.headers['X-Timezone'] = (config as CommonRequestConfig).timezone;
         }
+
+        if (undefined !== (config as CommonRequestConfig).acceptVersion) {
+            config.headers = config.headers || {};
+            config.headers['X-Accept-Version'] = (config as CommonRequestConfig).acceptVersion;
+        }
     }
 }
