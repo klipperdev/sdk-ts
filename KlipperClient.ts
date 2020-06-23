@@ -200,5 +200,10 @@ export class KlipperClient {
             config.headers = config.headers || {};
             config.headers['X-Fields'] = ((config as CommonRequestConfig).fields as string[]).join(',');
         }
+
+        if (undefined !== (config as CommonRequestConfig).timezone) {
+            config.headers = config.headers || {};
+            config.headers['X-Timezone'] = (config as CommonRequestConfig).timezone;
+        }
     }
 }

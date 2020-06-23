@@ -13,5 +13,6 @@ import {AxiosRequestConfig} from 'axios';
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export interface CommonRequestConfig extends AxiosRequestConfig {
+    timezone?: string;
     fields?: string[];
 }
