@@ -110,7 +110,7 @@ export class KlipperClient {
 
         for (const requestConfig of requestConfigs) {
             if (requestConfig.canceler) {
-                requestConfig.config.cancelToken = new axios.CancelToken(function executor(c) {
+                requestConfig.config.cancelToken = new axios.CancelToken((c: Function) => {
                     (requestConfig.canceler as Canceler).setExecutor(c);
                 });
             }
@@ -140,7 +140,7 @@ export class KlipperClient {
      */
     public async request<T = MapKey>(config: AxiosRequestConfig, canceler?: Canceler): Promise<T|null> {
         if (canceler) {
-            config.cancelToken = new axios.CancelToken(function executor(c) {
+            config.cancelToken = new axios.CancelToken((c: Function) => {
                 canceler.setExecutor(c);
             });
         }
