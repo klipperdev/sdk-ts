@@ -146,6 +146,15 @@ export class KlipperClient {
      * Build and run the request.
      */
     public async request<T = MapKey>(config: RequestConfigType, canceler?: Canceler): Promise<T|null> {
+        const res = await this.requestRaw<T>(config, canceler);
+
+        return res ? res.data : null;
+    }
+
+    /**
+     * Build and run the raw request.
+     */
+    public async requestRaw<T = any>(config: RequestConfigType, canceler?: Canceler): Promise<AxiosResponse<T>|null> {
         if (canceler) {
             config.cancelToken = new axios.CancelToken((c: Function) => {
                 canceler.setExecutor(c);
@@ -154,9 +163,8 @@ export class KlipperClient {
 
         try {
             KlipperClient.updateRequestConfig(config);
-            const res = await this.axios.request(config);
 
-            return res ? res.data : null;
+            return await this.axios.request(config);
         } catch (e) {
             if (!axios.isCancel(e)) {
                 throw createApiError(e);
