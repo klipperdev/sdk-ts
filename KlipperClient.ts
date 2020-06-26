@@ -94,6 +94,10 @@ export class KlipperClient {
         return this.services[name] as T;
     }
 
+    public getBaseUrl(): string {
+        return this.axios.defaults.baseURL as string;
+    }
+
     /**
      * Add a request interceptor.
      */
