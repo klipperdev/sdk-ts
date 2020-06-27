@@ -14,7 +14,7 @@ import {Errors} from '@klipper/http-client/models/responses/Errors';
 /**
  * Create the error for the api.
  *
- * @author François Pluchino <francois.pluchino@gmail.com>
+ * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export function createApiError(error: Error): HttpClientRequestError {
     let message: string = 'Error network';
