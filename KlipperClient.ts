@@ -184,7 +184,7 @@ export class KlipperClient {
     public async requestList<T = MapKey>(config: ListRequestConfig|AxiosRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
         const res = await this.request<ListResponse<T>>(config, canceler);
 
-        return res ? res : {results: [], page: 1, limit: 1, pages: 1, total: 0} as ListResponse<T>;
+        return res ? res : {results: [], page: 0, limit: 0, pages: 0, total: 0} as ListResponse<T>;
     }
 
     private static updateRequestConfig(config: RequestConfigType): void {
