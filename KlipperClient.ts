@@ -205,7 +205,7 @@ export class KlipperClient {
         if (undefined !== (config as ListRequestConfig).sort) {
             const sort: Sort|Sort[] = (config as ListRequestConfig).sort as Sort|Sort[];
             config.headers = config.headers || {};
-            config.headers['X-Search'] = (typeof sort === 'object' ? [sort as Sort] : sort).toString();
+            config.headers['X-Sort'] = (typeof sort === 'object' ? [sort as Sort] : sort).toString();
         }
 
         if (undefined !== (config as ListRequestConfig).filter) {
