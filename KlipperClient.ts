@@ -25,11 +25,13 @@ import {OauthConfig} from './OauthConfig';
 import {ServiceNotFoundError} from './errors/ServiceNotFoundError';
 import {Service, ServiceConstructor} from './Service';
 import {Authorization} from './services/Authorization';
+import {Metadata} from './services/Metadata';
 import {createApiError} from './utils/error';
 import {removeEmptyRequestAuth} from './interceptors';
 
 const SERVICES: ServiceConstructor[] = [
     Authorization,
+    Metadata,
 ];
 
 /**
