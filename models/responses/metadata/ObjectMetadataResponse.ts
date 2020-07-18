@@ -12,6 +12,7 @@
  */
 export interface ObjectMetadataResponse {
     name: string;
+    plural_name: string;
     label: string;
     sortable: boolean;
     multi_sortable: boolean;
