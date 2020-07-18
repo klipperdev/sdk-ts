@@ -15,7 +15,7 @@ import {MapKey} from '@klipper/http-client/models/MapKey';
 export interface ChildMetadataResponse {
     name: string;
     type: string;
-    label: number;
+    label: string;
     read_only: boolean;
     required: boolean;
     input: string;
