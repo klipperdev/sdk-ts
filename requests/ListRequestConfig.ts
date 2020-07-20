@@ -18,7 +18,7 @@ import {Sort} from './Sort';
 export interface ListRequestConfig extends CommonRequestConfig {
     page?: number;
     limit?: number;
-    sort?: Sort|Sort[],
+    sort?: Sort|Sort[]|string|string[],
     filter?: FilterCondition|FilterRule;
     search?: string;
 }
