@@ -7,6 +7,8 @@
  * file that was distributed with this source code.
  */
 
+import {MapKey} from '@klipper/http-client/models/MapKey';
+
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
@@ -17,7 +19,7 @@ export interface ObjectMetadataResponse {
     plural_label: string;
     sortable: boolean;
     multi_sortable: boolean;
-    default_sortable: string[];
+    default_sortable: MapKey<string>;
     filterable: boolean;
     searchable: boolean;
     translatable: boolean;
