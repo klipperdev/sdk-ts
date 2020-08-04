@@ -14,5 +14,5 @@ import {FilterRule} from './FilterRule';
  */
 export interface FilterCondition {
     condition: string;
-    rules: FilterRule[];
+    rules: (FilterRule|FilterCondition)[];
 }
