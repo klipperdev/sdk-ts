@@ -8,7 +8,7 @@
  */
 
 import {HttpClientError} from '@klipper/http-client/errors/HttpClientError';
-import {ServiceConstructor} from '../Service';
+import {ServiceConstructor} from '@klipper/sdk/Service';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

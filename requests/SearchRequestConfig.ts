@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {CommonRequestConfig} from './CommonRequestConfig';
+import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

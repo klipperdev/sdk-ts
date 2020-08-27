@@ -9,9 +9,9 @@
 
 import {AxiosBasicCredentials} from 'axios';
 import {Canceler} from '@klipper/http-client/Canceler';
-import {BaseService} from '../BaseService';
-import {CredentialsRequest} from '../models/requests/CredentialsRequest';
-import {OauthTokenResponse} from '../models/responses/OauthTokenResponse';
+import {BaseService} from '@klipper/sdk/BaseService';
+import {CredentialsRequest} from '@klipper/sdk/models/requests/CredentialsRequest';
+import {OauthTokenResponse} from '@klipper/sdk/models/responses/OauthTokenResponse';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

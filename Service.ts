@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {KlipperClient} from './KlipperClient';
+import {KlipperClient} from '@klipper/sdk/KlipperClient';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

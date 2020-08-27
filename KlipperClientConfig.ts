@@ -9,8 +9,8 @@
 
 import {AxiosRequestConfig} from 'axios';
 import {MapKey} from '@klipper/http-client/models/MapKey';
-import {OauthConfig} from './OauthConfig';
-import {ServiceConstructor} from './Service';
+import {OauthConfig} from '@klipper/sdk/OauthConfig';
+import {ServiceConstructor} from '@klipper/sdk/Service';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

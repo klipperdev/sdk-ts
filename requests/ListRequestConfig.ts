@@ -7,10 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import {FilterCondition} from '../models/filters/FilterCondition';
-import {FilterRule} from '../models/filters/FilterRule';
-import {CommonRequestConfig} from './CommonRequestConfig';
-import {Sort} from './Sort';
+import {FilterCondition} from '@klipper/sdk/models/filters/FilterCondition';
+import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
+import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
+import {Sort} from '@klipper/sdk/requests/Sort';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

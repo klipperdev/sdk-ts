@@ -8,7 +8,7 @@
  */
 
 import {Canceler} from '@klipper/http-client/Canceler';
-import {RequestConfigType} from './RequestConfigTypes';
+import {RequestConfigType} from '@klipper/sdk/requests/RequestConfigTypes';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

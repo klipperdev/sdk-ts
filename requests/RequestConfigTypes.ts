@@ -8,13 +8,13 @@
  */
 
 import {AxiosRequestConfig} from 'axios';
-import {CommonRequestConfig} from './CommonRequestConfig';
-import {RequestConfig} from './RequestConfig';
-import {ListRequestConfig} from './ListRequestConfig';
-import {DeleteRequestConfig} from './DeleteRequestConfig';
-import {BatchRequestConfig} from './BatchRequestConfig';
-import {SearchRequestConfig} from './SearchRequestConfig';
-import {MetadataRequestConfig} from './MetadataRequestConfig';
+import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
+import {RequestConfig} from '@klipper/sdk/requests/RequestConfig';
+import {ListRequestConfig} from '@klipper/sdk/requests/ListRequestConfig';
+import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
+import {BatchRequestConfig} from '@klipper/sdk/requests/BatchRequestConfig';
+import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
+import {MetadataRequestConfig} from '@klipper/sdk/requests/MetadataRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

@@ -7,8 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {MapKey} from '@klipper/http-client/models/MapKey';
-import {ChildMetadataResponse} from './ChildMetadataResponse';
+import {ChildMetadataResponse} from '@klipper/sdk/models/responses/metadata/ChildMetadataResponse';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

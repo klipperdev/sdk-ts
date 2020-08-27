@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {FilterRule} from './FilterRule';
+import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
