@@ -15,9 +15,9 @@ export class Sort {
 
     public readonly direction: string;
 
-    constructor(field: string, direction: string = 'ASC') {
+    constructor(field: string, direction: string = 'asc') {
         this.field = field;
-        this.direction = 'DESC' === direction ? 'DESC' : 'ASC';
+        this.direction = 'desc' === direction ? 'desc' : 'asc';
     }
 
     public toString(): string {
