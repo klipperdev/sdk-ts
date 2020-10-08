@@ -25,12 +25,14 @@ import {OauthConfig} from '@klipper/sdk/OauthConfig';
 import {ServiceNotFoundError} from '@klipper/sdk/errors/ServiceNotFoundError';
 import {Service, ServiceConstructor} from '@klipper/sdk/Service';
 import {Authorization} from '@klipper/sdk/services/Authorization';
+import {Intl} from '@klipper/sdk/services/Intl';
 import {Metadata} from '@klipper/sdk/services/Metadata';
 import {createApiError} from '@klipper/sdk/utils/error';
 import {removeEmptyRequestAuth} from '@klipper/sdk/interceptors';
 
 const SERVICES: ServiceConstructor[] = [
     Authorization,
+    Intl,
     Metadata,
 ];
 
