@@ -9,7 +9,6 @@
 
 import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
-import {MapKey} from '@klipper/http-client/models/MapKey';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {KlipperClientConfig} from '@klipper/sdk/KlipperClientConfig';
 import {RequestConfigItem} from '@klipper/sdk/requests/RequestConfigItem';
@@ -44,7 +43,7 @@ export class KlipperClient {
 
     public readonly oauthConfig: OauthConfig;
 
-    private readonly services: MapKey<Service> = {};
+    private readonly services: Record<string, Service> = {};
 
     constructor(config: KlipperClientConfig) {
         const axiosConfig = config.axiosConfig || {};
@@ -153,7 +152,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    public async request<T = MapKey>(config: RequestConfigType, canceler?: Canceler): Promise<T|null> {
+    public async request<T = Record<string, any>>(config: RequestConfigType, canceler?: Canceler): Promise<T|null> {
         const res = await this.requestRaw<T>(config, canceler);
 
         return res ? res.data : null;
@@ -185,7 +184,7 @@ export class KlipperClient {
     /**
      * Build and run the request.
      */
-    public async requestList<T = MapKey>(config: ListRequestConfig|AxiosRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
+    public async requestList<T = Record<string, any>>(config: ListRequestConfig|AxiosRequestConfig, canceler?: Canceler): Promise<ListResponse<T>> {
         const res = await this.request<ListResponse<T>>(config, canceler);
 
         return res ? res : {results: [], page: 0, limit: 0, pages: 0, total: 0} as ListResponse<T>;

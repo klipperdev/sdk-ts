@@ -7,8 +7,6 @@
  * file that was distributed with this source code.
  */
 
-import {MapKey} from '@klipper/http-client/models/MapKey';
-
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
@@ -19,6 +17,6 @@ export interface ChildMetadataResponse {
     read_only: boolean;
     required: boolean;
     input: string;
-    input_config: MapKey;
+    input_config: Record<string, any>;
     editable_permissions: boolean;
 }
