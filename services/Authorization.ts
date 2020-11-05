@@ -38,6 +38,7 @@ export class Authorization extends BaseService {
             },
             auth: {} as AxiosBasicCredentials,
             data,
+            skipRetry: true,
         }, canceler) as OauthTokenResponse;
     }
 
@@ -45,6 +46,7 @@ export class Authorization extends BaseService {
         return await this.client.request<null>({
             method: 'PUT',
             url: '/logout',
+            skipRetry: true,
         }, canceler);
     }
 
@@ -68,6 +70,7 @@ export class Authorization extends BaseService {
             },
             auth: {} as AxiosBasicCredentials,
             data,
+            skipRetry: true,
         }, canceler) as OauthTokenResponse;
     }
 }

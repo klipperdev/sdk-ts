@@ -16,4 +16,5 @@ export interface CommonRequestConfig extends AxiosRequestConfig {
     acceptVersion?: string;
     timezone?: string;
     fields?: string[];
+    skipRetry?: boolean;
 }
