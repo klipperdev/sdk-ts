@@ -19,6 +19,7 @@ import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
 import {BatchRequestConfig} from '@klipper/sdk/requests/BatchRequestConfig';
 import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
 import {MetadataRequestConfig} from '@klipper/sdk/requests/MetadataRequestConfig';
+import {CancelerCancelToken} from '@klipper/sdk/requests/CancelerCancelToken';
 import {Sort} from '@klipper/sdk/requests/Sort';
 import {OauthConfig} from '@klipper/sdk/OauthConfig';
 import {ServiceNotFoundError} from '@klipper/sdk/errors/ServiceNotFoundError';
@@ -166,6 +167,7 @@ export class KlipperClient {
             config.cancelToken = new axios.CancelToken((c: Function) => {
                 canceler.setExecutor(c);
             });
+            (config.cancelToken as CancelerCancelToken).originalCanceler = canceler;
         }
 
         try {
