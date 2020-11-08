@@ -15,7 +15,7 @@ import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
  */
 export interface ListViewResponse {
     id: string|number;
-    name: number;
+    name: string;
     label: string;
     filters: FilterCondition|FilterRule;
     [key: string]: any;
