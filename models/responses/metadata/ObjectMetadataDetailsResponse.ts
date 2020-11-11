@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import {ObjectMetadataResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataResponse';
-import {FieldMetadataResponse} from '@klipper/sdk/models/responses/metadata/FieldMetadataResponse';
 import {AssociationMetadataResponse} from '@klipper/sdk/models/responses/metadata/AssociationMetadataResponse';
+import {FieldMetadataResponse} from '@klipper/sdk/models/responses/metadata/FieldMetadataResponse';
+import {ObjectMetadataResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataResponse';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

@@ -9,8 +9,8 @@
 
 import {Canceler} from '@klipper/http-client/Canceler';
 import {BaseService} from '@klipper/sdk/BaseService';
-import {ObjectMetadataResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataResponse';
 import {ObjectMetadataDetailsResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataDetailsResponse';
+import {ObjectMetadataResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataResponse';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

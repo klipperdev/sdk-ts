@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosRequestConfig} from 'axios';
 import {OauthConfig} from '@klipper/sdk/OauthConfig';
 import {ServiceConstructor} from '@klipper/sdk/Service';
+import {AxiosRequestConfig} from 'axios';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

@@ -7,28 +7,28 @@
  * file that was distributed with this source code.
  */
 
-import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
-import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
 import {Canceler} from '@klipper/http-client/Canceler';
-import {KlipperClientConfig} from '@klipper/sdk/KlipperClientConfig';
-import {RequestConfigItem} from '@klipper/sdk/requests/RequestConfigItem';
-import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
-import {ListRequestConfig} from '@klipper/sdk/requests/ListRequestConfig';
-import {RequestConfigType} from '@klipper/sdk/requests/RequestConfigTypes';
-import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
-import {BatchRequestConfig} from '@klipper/sdk/requests/BatchRequestConfig';
-import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
-import {MetadataRequestConfig} from '@klipper/sdk/requests/MetadataRequestConfig';
-import {CancelerCancelToken} from '@klipper/sdk/requests/CancelerCancelToken';
-import {Sort} from '@klipper/sdk/requests/Sort';
-import {OauthConfig} from '@klipper/sdk/OauthConfig';
+import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
 import {ServiceNotFoundError} from '@klipper/sdk/errors/ServiceNotFoundError';
+import {removeEmptyRequestAuth} from '@klipper/sdk/interceptors';
+import {KlipperClientConfig} from '@klipper/sdk/KlipperClientConfig';
+import {OauthConfig} from '@klipper/sdk/OauthConfig';
+import {BatchRequestConfig} from '@klipper/sdk/requests/BatchRequestConfig';
+import {CancelerCancelToken} from '@klipper/sdk/requests/CancelerCancelToken';
+import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
+import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
+import {ListRequestConfig} from '@klipper/sdk/requests/ListRequestConfig';
+import {MetadataRequestConfig} from '@klipper/sdk/requests/MetadataRequestConfig';
+import {RequestConfigItem} from '@klipper/sdk/requests/RequestConfigItem';
+import {RequestConfigType} from '@klipper/sdk/requests/RequestConfigTypes';
+import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
+import {Sort} from '@klipper/sdk/requests/Sort';
 import {Service, ServiceConstructor} from '@klipper/sdk/Service';
 import {Authorization} from '@klipper/sdk/services/Authorization';
 import {Intl} from '@klipper/sdk/services/Intl';
 import {Metadata} from '@klipper/sdk/services/Metadata';
 import {createApiError} from '@klipper/sdk/utils/error';
-import {removeEmptyRequestAuth} from '@klipper/sdk/interceptors';
+import axios, {AxiosInstance, AxiosRequestConfig, AxiosResponse} from 'axios';
 
 const SERVICES: ServiceConstructor[] = [
     Authorization,

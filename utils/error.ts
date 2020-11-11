@@ -7,9 +7,9 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosError, AxiosResponse} from 'axios';
 import {HttpClientRequestError} from '@klipper/http-client/errors/HttpClientRequestError';
 import {Errors} from '@klipper/http-client/models/responses/Errors';
+import {AxiosError, AxiosResponse} from 'axios';
 
 /**
  * Create the error for the api.

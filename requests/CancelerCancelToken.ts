@@ -7,8 +7,8 @@
  * file that was distributed with this source code.
  */
 
-import {CancelToken} from 'axios';
 import {Canceler} from '@klipper/http-client/Canceler';
+import {CancelToken} from 'axios';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

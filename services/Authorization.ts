@@ -7,11 +7,11 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosBasicCredentials} from 'axios';
 import {Canceler} from '@klipper/http-client/Canceler';
 import {BaseService} from '@klipper/sdk/BaseService';
 import {CredentialsRequest} from '@klipper/sdk/models/requests/CredentialsRequest';
 import {OauthTokenResponse} from '@klipper/sdk/models/responses/OauthTokenResponse';
+import {AxiosBasicCredentials} from 'axios';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

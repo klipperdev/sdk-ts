@@ -7,14 +7,14 @@
  * file that was distributed with this source code.
  */
 
-import {AxiosRequestConfig} from 'axios';
-import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
-import {RequestConfig} from '@klipper/sdk/requests/RequestConfig';
-import {ListRequestConfig} from '@klipper/sdk/requests/ListRequestConfig';
-import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
 import {BatchRequestConfig} from '@klipper/sdk/requests/BatchRequestConfig';
-import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
+import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
+import {DeleteRequestConfig} from '@klipper/sdk/requests/DeleteRequestConfig';
+import {ListRequestConfig} from '@klipper/sdk/requests/ListRequestConfig';
 import {MetadataRequestConfig} from '@klipper/sdk/requests/MetadataRequestConfig';
+import {RequestConfig} from '@klipper/sdk/requests/RequestConfig';
+import {SearchRequestConfig} from '@klipper/sdk/requests/SearchRequestConfig';
+import {AxiosRequestConfig} from 'axios';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>

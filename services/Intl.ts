@@ -8,8 +8,8 @@
  */
 
 import {Canceler} from '@klipper/http-client/Canceler';
-import {BaseService} from '@klipper/sdk/BaseService';
 import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
+import {BaseService} from '@klipper/sdk/BaseService';
 import {AvailableLocaleResponse} from '@klipper/sdk/models/responses/intl/AvailableLocaleResponse';
 
 /**
