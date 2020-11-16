@@ -11,6 +11,7 @@ import {Canceler} from '@klipper/http-client/Canceler';
 import {BaseService} from '@klipper/sdk/BaseService';
 import {ObjectMetadataDetailsResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataDetailsResponse';
 import {ObjectMetadataResponse} from '@klipper/sdk/models/responses/metadata/ObjectMetadataResponse';
+import {SystemChoiceResponse} from '@klipper/sdk/models/responses/metadata/SystemChoiceResponse';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
@@ -35,5 +36,12 @@ export class Metadata extends BaseService {
                 'X-Metadata-Details': true,
             },
         }, canceler) as ObjectMetadataDetailsResponse[];
+    }
+
+    public async systemChoices(organization: string = 'user', canceler?: Canceler): Promise<SystemChoiceResponse[]> {
+        return await this.client.request<SystemChoiceResponse[]>({
+            method: 'GET',
+            url: '/' + organization + '/metadatas/choices',
+        }, canceler) as SystemChoiceResponse[];
     }
 }
