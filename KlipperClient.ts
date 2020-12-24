@@ -223,6 +223,11 @@ export class KlipperClient {
             config.headers['X-Search'] = (config as ListRequestConfig).search;
         }
 
+        if (undefined !== (config as ListRequestConfig).searchFields) {
+            config.headers = config.headers || {};
+            config.headers['X-Search-Fields'] = ((config as ListRequestConfig).searchFields as string[]).join(',');
+        }
+
         if (undefined !== (config as CommonRequestConfig).fields) {
             config.headers = config.headers || {};
             config.headers['X-Fields'] = ((config as CommonRequestConfig).fields as string[]).join(',');

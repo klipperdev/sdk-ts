@@ -21,4 +21,5 @@ export interface ListRequestConfig extends CommonRequestConfig {
     sort?: Sort|Sort[]|string|string[],
     filter?: FilterCondition|FilterRule;
     search?: string;
+    searchFields?: string[];
 }
