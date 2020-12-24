@@ -15,4 +15,5 @@ import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
 export interface SearchRequestConfig extends CommonRequestConfig {
     query: string;
     objects?: string[];
+    queryFields?: string[];
 }

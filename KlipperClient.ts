@@ -252,6 +252,11 @@ export class KlipperClient {
             config.headers = config.headers || {};
             config.headers['X-Query'] = (config as SearchRequestConfig).query;
 
+            if (undefined !== (config as SearchRequestConfig).queryFields) {
+                config.headers = config.headers || {};
+                config.headers['X-Query-Fields'] = (config as SearchRequestConfig).queryFields;
+            }
+
             if (undefined !== (config as SearchRequestConfig).objects) {
                 config.headers['X-Objects'] = ((config as SearchRequestConfig).objects as string[]).join(',');
             }
