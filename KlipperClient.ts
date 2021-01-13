@@ -228,6 +228,11 @@ export class KlipperClient {
             config.headers['X-Search-Fields'] = ((config as ListRequestConfig).searchFields as string[]).join(',');
         }
 
+        if (undefined !== (config as ListRequestConfig).viewsDetails) {
+            config.headers = config.headers || {};
+            config.headers['X-Views-Details'] = 'true';
+        }
+
         if (undefined !== (config as CommonRequestConfig).fields) {
             config.headers = config.headers || {};
             config.headers['X-Fields'] = ((config as CommonRequestConfig).fields as string[]).join(',');

@@ -22,4 +22,5 @@ export interface ListRequestConfig extends CommonRequestConfig {
     filter?: FilterCondition|FilterRule;
     search?: string;
     searchFields?: string[];
+    viewsDetails?: boolean;
 }
