@@ -7,11 +7,13 @@
  * file that was distributed with this source code.
  */
 
+import {BatchRequest} from '@klipper/http-client/models/requests/BatchRequest';
 import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export interface BatchRequestConfig extends CommonRequestConfig {
+export interface BatchRequestConfig<R = Record<string, any>> extends CommonRequestConfig {
     transactional?: boolean;
+    data: BatchRequest;
 }

@@ -8,6 +8,7 @@
  */
 
 import {Canceler} from '@klipper/http-client/Canceler';
+import {BatchResultListResponse} from '@klipper/http-client/models/responses/BatchResultListResponse';
 import {ListResponse} from '@klipper/http-client/models/responses/ListResponse';
 import {ServiceNotFoundError} from '@klipper/sdk/errors/ServiceNotFoundError';
 import {removeEmptyRequestAuth} from '@klipper/sdk/interceptors';
@@ -190,6 +191,15 @@ export class KlipperClient {
         const res = await this.request<ListResponse<T>>(config, canceler);
 
         return res ? res : {results: [], page: 0, limit: 0, pages: 0, total: 0} as ListResponse<T>;
+    }
+
+    /**
+     * Build and run the request for batch.
+     */
+    public async requestBatch<T = Record<string, any>>(config: BatchRequestConfig|AxiosRequestConfig, canceler?: Canceler): Promise<BatchResultListResponse<T>> {
+        const res = await this.request<BatchResultListResponse<T>>(config, canceler);
+
+        return res ? res : {has_errors: false, status: 'successfully', records: []} as BatchResultListResponse<T>;
     }
 
     private static updateRequestConfig(config: RequestConfigType): void {
