@@ -27,3 +27,31 @@ export function mergeFilterRules(...rules: Array<Filter|null|undefined>): Array<
 
     return validRules;
 }
+
+/**
+ * Merge and optimize the filters.
+ */
+export function mergeFilters(condition: string, ...rules: Array<Filter|null|undefined>): Filter {
+    const validFilter = {
+        condition,
+        rules: [],
+    } as FilterCondition;
+
+    for (const rule of rules) {
+        if (rule && isObject(rule)) {
+            if (condition === (rule as FilterCondition).condition && Array.isArray((rule as FilterCondition).rules)) {
+                (rule as FilterCondition).rules.forEach((subRule: Filter) => {
+                    validFilter.rules.push(subRule);
+                });
+            } else {
+                validFilter.rules.push(rule);
+            }
+        }
+    }
+
+    if (1 === validFilter.rules.length) {
+        return validFilter.rules[0];
+    }
+
+    return validFilter;
+}
