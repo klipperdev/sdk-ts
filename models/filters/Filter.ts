@@ -7,9 +7,10 @@
  * file that was distributed with this source code.
  */
 
-import {Filter} from '@klipper/sdk/models/filters/Filter';
+import {FilterCondition} from '@klipper/sdk/models/filters/FilterCondition';
+import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export type FilterResult = Filter|null;
+export type Filter = FilterCondition|FilterRule;

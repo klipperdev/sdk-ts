@@ -7,12 +7,12 @@
  * file that was distributed with this source code.
  */
 
-import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
+import {Filter} from '@klipper/sdk/models/filters/Filter';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export interface FilterCondition {
     condition: string;
-    rules: (FilterRule|FilterCondition)[];
+    rules: Filter[];
 }

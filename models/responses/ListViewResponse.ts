@@ -7,8 +7,7 @@
  * file that was distributed with this source code.
  */
 
-import {FilterCondition} from '@klipper/sdk/models/filters/FilterCondition';
-import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
+import {Filter} from '@klipper/sdk/models/filters/Filter';
 
 /**
  * @author François Pluchino <francois.pluchino@klipper.dev>
@@ -17,6 +16,6 @@ export interface ListViewResponse {
     id: string|number;
     name: string;
     label: string;
-    filters: FilterCondition|FilterRule;
+    filters: Filter;
     [key: string]: any;
 }

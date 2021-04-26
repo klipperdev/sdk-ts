@@ -8,16 +8,16 @@
  */
 
 import {isObject} from '@klipper/bow/utils/object';
+import {Filter} from '@klipper/sdk/models/filters/Filter';
 import {FilterCondition} from '@klipper/sdk/models/filters/FilterCondition';
-import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
 
 /**
  * Merge the rules for filter.
  *
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export function mergeFilterRules(...rules: Array<FilterRule|FilterCondition|null|undefined>): Array<FilterRule|FilterCondition> {
-    const validRules = [] as Array<FilterRule|FilterCondition>;
+export function mergeFilterRules(...rules: Array<Filter|null|undefined>): Array<Filter> {
+    const validRules = [] as Array<Filter>;
 
     for (const rule of rules) {
         if (rule && isObject(rule)) {
