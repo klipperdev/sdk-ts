@@ -121,7 +121,7 @@ export class KlipperClient {
      * Build and run requests in parallel.
      */
     public async requestAll<T = any>(requestConfigs: RequestConfigItem[]): Promise<(T|null)[]> {
-        const requests = [] as Promise<AxiosResponse<any>>[];
+        const requests = [] as Promise<AxiosResponse>[];
         const response = [] as (T|null)[];
 
         for (const requestConfig of requestConfigs) {
