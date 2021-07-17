@@ -13,5 +13,5 @@
 export interface FilterRule {
     field: string;
     operator: string;
-    value?: string|number|boolean|object|null;
+    value?: string|number|boolean|object|Record<string, any>|null;
 }
