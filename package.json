@@ -1,13 +1,13 @@
 {
     "name": "@klipper/sdk",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "description": "SDK of Klipper Platform for TypeScript",
     "repository": "git@github.com:klipperdev/sdk-ts.git",
     "author": "François Pluchino <francois.pluchino@klipper.dev>",
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "@klipper/http-client": "github:klipperdev/http-client-ts#master",
+        "@klipper/http-client": "github:klipperdev/http-client-ts#2.0",
         "axios": "^0.21.1"
     }
 }
