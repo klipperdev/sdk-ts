@@ -16,7 +16,7 @@ import {AxiosError, AxiosResponse} from 'axios';
  *
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
-export function createApiError(error: Error): HttpClientRequestError {
+export async function createApiError(error: Error): Promise<HttpClientRequestError> {
     let message: string = 'Error network';
     let statusCode: number = 0;
     const errors = {errors: []} as Errors;
@@ -25,7 +25,15 @@ export function createApiError(error: Error): HttpClientRequestError {
         statusCode = ((error as AxiosError).response as AxiosResponse).status;
 
         if (((error as AxiosError).response as AxiosResponse).data) {
-            const data = ((error as AxiosError).response as AxiosResponse).data;
+            let data = ((error as AxiosError).response as AxiosResponse).data;
+
+            if (data instanceof Blob) {
+                try {
+                    data = JSON.parse(await data.text());
+                } catch (e) {
+                    // Skip invalid conversion
+                }
+            }
 
             if (400 === statusCode && 'invalid_grant' === data.error) {
                 message = 'Invalid credentials';

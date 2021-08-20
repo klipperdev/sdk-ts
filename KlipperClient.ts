@@ -144,7 +144,7 @@ export class KlipperClient {
             }
         } catch (e) {
             if (!axios.isCancel(e)) {
-                throw createApiError(e);
+                throw await createApiError(e);
             }
         }
 
@@ -177,7 +177,7 @@ export class KlipperClient {
             return await this.axios.request(config);
         } catch (e) {
             if (!axios.isCancel(e)) {
-                throw createApiError(e);
+                throw await createApiError(e);
             }
         }
 
