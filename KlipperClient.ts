@@ -142,7 +142,7 @@ export class KlipperClient {
             for (let i = 0; i < results.length; ++i) {
                 response[i] = results[i] ? results[i].data : null;
             }
-        } catch (e) {
+        } catch (e: any) {
             if (!axios.isCancel(e)) {
                 throw await createApiError(e);
             }
@@ -175,7 +175,7 @@ export class KlipperClient {
             KlipperClient.updateRequestConfig(config);
 
             return await this.axios.request(config);
-        } catch (e) {
+        } catch (e: any) {
             if (!axios.isCancel(e)) {
                 throw await createApiError(e);
             }
