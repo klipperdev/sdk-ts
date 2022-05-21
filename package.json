@@ -7,7 +7,7 @@
     "license": "MIT",
     "private": true,
     "dependencies": {
-        "@klipper/http-client": "git+ssh://git@github.com:klipperdev/http-client-ts.git#2.0",
+        "@klipper/http-client": "github:klipperdev/http-client-ts.git#2.0",
         "axios": "^0.21.1"
     }
 }
