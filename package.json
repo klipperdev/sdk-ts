@@ -6,6 +6,10 @@
     "author": "François Pluchino <francois.pluchino@klipper.dev>",
     "license": "MIT",
     "private": true,
+    "peerDependencies": {
+        "@klipper/http-client": "2.0",
+        "axios": "^0.21"
+    },
     "dependencies": {
         "@klipper/http-client": "github:klipperdev/http-client-ts.git#2.0",
         "axios": "^0.21.1"
