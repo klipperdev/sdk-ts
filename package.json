@@ -7,7 +7,6 @@
     "license": "MIT",
     "private": true,
     "peerDependencies": {
-        "@klipper/http-client": "^2.0",
         "axios": "^0.21"
     },
     "dependencies": {
