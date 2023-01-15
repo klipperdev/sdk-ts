@@ -15,5 +15,5 @@ import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
  */
 export interface BatchRequestConfig<R = Record<string, any>> extends CommonRequestConfig {
     transactional?: boolean;
-    data: BatchRequest;
+    data?: BatchRequest<R>|any;
 }

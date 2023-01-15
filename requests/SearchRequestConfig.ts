@@ -13,7 +13,7 @@ import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export interface SearchRequestConfig extends CommonRequestConfig {
-    query: string;
+    query?: string;
     objects?: string[];
     queryFields?: string[];
 }

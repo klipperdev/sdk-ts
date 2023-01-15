@@ -13,5 +13,5 @@ import {CommonRequestConfig} from '@klipper/sdk/requests/CommonRequestConfig';
  * @author François Pluchino <francois.pluchino@klipper.dev>
  */
 export interface MetadataRequestConfig extends CommonRequestConfig {
-    metadataDetails: boolean;
+    metadataDetails?: boolean;
 }
