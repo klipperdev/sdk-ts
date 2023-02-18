@@ -7,9 +7,11 @@
  * file that was distributed with this source code.
  */
 
-import {isObject} from '@klipper/bow/utils/object';
+import {deepMerge, isObject} from '@klipper/bow/utils/object';
 import {Filter} from '@klipper/sdk/models/filters/Filter';
+import {FilterResult} from '@klipper/sdk/models/filters/FilterResult';
 import {FilterCondition} from '@klipper/sdk/models/filters/FilterCondition';
+import {FilterRule} from '@klipper/sdk/models/filters/FilterRule';
 
 /**
  * Merge the rules for filter.
@@ -54,4 +56,30 @@ export function mergeFilters(condition: string, ...rules: Array<Filter|null|unde
     }
 
     return validFilter;
+}
+
+export function excludeFiltersRuleFields(filters: FilterResult, excludedRuleFields: string[]): FilterResult {
+    if (!!filters) {
+        filters = deepMerge<Filter>({}, filters as Filter) as Filter;
+
+        if (excludedRuleFields.includes((filters as FilterRule).field)) {
+            return null;
+        }
+
+        if ((filters as FilterCondition).rules) {
+            const cleanedRules = [] as Filter[];
+
+            (filters as FilterCondition).rules.forEach((rule: Filter) => {
+                const cleanedRule = excludeFiltersRuleFields(rule, excludedRuleFields);
+
+                if (null !== cleanedRule) {
+                    cleanedRules.push(cleanedRule);
+                }
+            });
+
+            (filters as FilterCondition).rules = cleanedRules;
+        }
+    }
+
+    return filters;
 }
